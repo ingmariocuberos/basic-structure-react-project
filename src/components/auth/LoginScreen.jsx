@@ -4,10 +4,9 @@ import v from "validator";
 import {
     Link
   } from "react-router-dom";
-import googleLogo from '../../assets/Google G Logo.svg';
 import { useForm } from '../hooks/useForm';
 import { removeErrorMid, setErrorMid } from '../actions/errorAction';
-import { loginWithEmailAndPassword, startGoogleLogin } from '../actions/authAction';
+import { loginWithEmailAndPassword } from '../actions/authAction';
 
 
 export const LoginScreen = () => {
@@ -44,15 +43,11 @@ export const LoginScreen = () => {
         }
     }
 
-    const handleGoogleLogin = () =>{
-        dispatch( startGoogleLogin() );
-    }
-
     return (
         <form 
-            className="auth__login-container"
+            className=""
             onSubmit={ handleLogin }>
-            <Link to="/" className="auth__go-before"><i className="fas fa-times"></i></Link>
+            <Link to="/" className=""><i className=""></i></Link>
             <h1 className="text-primary">Login Screen</h1>
             <p className="text-primary">¿No tienes una cuenta? <Link to="/register" className="link">Registrate</Link></p>
             <label className="text-primary" htmlFor="email">Email</label>
@@ -62,7 +57,7 @@ export const LoginScreen = () => {
                 name="email"
                 value={ email }
                 onChange={ handleInputChange }
-                type="email"/>            
+                type="email"/>
             <label className="text-primary" htmlFor="password">Password</label>
             <input 
                 className="text-primary"
@@ -77,21 +72,6 @@ export const LoginScreen = () => {
                 >
                 Iniciar Sesión
             </button>
-            <span className="text-primary">o ingresa con:</span>
-                <div 
-                    className="d-block mt-2"
-                    onClick={ handleGoogleLogin }>
-                    <div 
-                        className="google-btn"
-                        onClick={ handleGoogleLogin }>
-                        <div className="google-icon-wrapper">
-                            <img className="google-icon" src={googleLogo} alt="google button" />
-                        </div>
-                        <p className="text-primary">
-                            <b>Sign in with google</b>
-                        </p>
-                    </div>
-                </div>
         </form>
     )
 }

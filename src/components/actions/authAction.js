@@ -1,6 +1,6 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
 import Swal from "sweetalert2"
-import { auth, provider } from "../../firebase/firebaseConfig"
+import { auth } from "../../firebase/firebaseConfig"
 import { logInAction, logOutAction } from "../../store/reducers/authReducer"
 import { setError } from "../../store/reducers/errorReducer"
 
@@ -29,17 +29,6 @@ export const loginWithEmailAndPassword = (emailIn, password) =>{
               )
             setError('Credenciales inválidas');
           }
-    }
-}
-
-export const startGoogleLogin = () =>{
-    return async (dispatch) =>{
-        signInWithPopup(auth, provider).then((userCredentials) => {
-            const credential = GoogleAuthProvider.credentialFromResult(userCredentials);
-            const accessToken = credential.accessToken;
-            let { email, uid } = userCredentials.user;
-            dispatch(logInAction({ accessToken, email, uid }));
-          })
     }
 }
 

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import v from "validator";
 import { useForm } from '../hooks/useForm';
 import { registerWithEmailAndPassword } from "../actions/authAction";
+import { removeErrorMid, setErrorMid } from "../actions/errorAction";
 
 
 export const RegisterScreen = () => {
@@ -25,20 +26,20 @@ export const RegisterScreen = () => {
     const validationRegister = (name, email, password, password2) =>{
 
         if( v.isEmpty(name)){
-            // dispatch(setError('Debe ingresar un nombre'));
+            dispatch(setErrorMid('Debe ingresar un nombre'));
             return false;
         } else if( v.escape(name).includes(";") ){
-            // dispatch(setError('Ingrese un nombre válido'))
+            dispatch(setErrorMid('Ingrese un nombre válido'))
             return false;
         } else if( !v.isEmail(email) ){
-            // dispatch(setError('Ingrese un email válido'));
+            dispatch(setErrorMid('Ingrese un email válido'));
             return false;
         } else if( password !== password2 || password.length < 5 ){
-            // dispatch(setError('Passwords incorrectos'));
+            dispatch(setErrorMid('Passwords incorrectos'));
             return false;
         }
     
-        // dispatch(removeError());
+        dispatch(removeErrorMid());
     
         return true;
     }
@@ -56,38 +57,34 @@ export const RegisterScreen = () => {
         }
     }
 
-
-
-    
-
     return (
         <form 
-            className="auth__login-container"
+            className=""
             onSubmit={ handleRegister }>
-            <Link to="/index" className="auth__go-before"><i className="fas fa-times"></i></Link>
-            <h1 className="auth__title">Login Screen</h1>
-            <label className="auth__label-register" htmlFor="nombre">Nombre</label>
-            <div className="auth__inputs-container">
+            <Link to="/index" className=""><i className=""></i></Link>
+            <h1 className="">Login Screen</h1>
+            <label className="" htmlFor="nombre">Nombre</label>
+            <div className="">
                 <input 
-                    className="input d-block auth__input-register" 
+                    className="" 
                     id="nombre"
                     name="name"
                     type="text"
                     value={ name }
                     onChange={ handleInputChange }
                     autoComplete="off"/>
-                <label className="auth__label-register" htmlFor="email">Email</label>
+                <label className="" htmlFor="email">Email</label>
                 <input 
-                    className="input d-block auth__input-register" 
+                    className="" 
                     id="email"
                     name="email"
                     type="email"
                     value={ email }
                     onChange={ handleInputChange }
                     autoComplete="off"/>   
-                <label className="auth__label-register" htmlFor="password">Password</label>
+                <label className="" htmlFor="password">Password</label>
                 <input 
-                    className="input d-block auth__input-register" 
+                    className="" 
                     id="password"
                     name="password"
                     type="password"
@@ -96,7 +93,7 @@ export const RegisterScreen = () => {
                     autoComplete="off"/>             
                 <label className="auth__label-register" htmlFor="password2">Confirm password</label>
                 <input 
-                    className="input d-block auth__input-register"
+                    className=""
                     id="password2"
                     name="password2"
                     type="password"
@@ -107,12 +104,12 @@ export const RegisterScreen = () => {
             <Link 
                 to='/register'
                 type="submit"
-                className="button d-block auth__btn-register"
+                className=""
                 onClick={handleRegister}
                 >
                 Registrate
             </Link>
-            <p className="d-block mt-2">¿Ya estás registrado? <Link to="/inicia-ahora" className="link">Inicia sesión</Link></p>
+            <p className="">¿Ya estás registrado? <Link to="/inicia-ahora" className="">Inicia sesión</Link></p>
         </form>
     )
 }
