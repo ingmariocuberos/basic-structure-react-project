@@ -1,8 +1,8 @@
+import { Animation } from './components/UI/Animation'
+import { LandingText } from './components/UI/LandingText'
+import { Navbar } from './components/UI/Navbar'
 import './index.css'
 // import { PropTypes } from "prop-types"
-import { Navbar } from "./UI/Navbar"
-import { Animation } from './UI/Animation'
-import { LandingText } from './UI/LandingText';
 
 export const MttoApp = ({title, subtitulo}) => {
   return (

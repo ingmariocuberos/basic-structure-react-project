@@ -1,7 +1,7 @@
 import React from 'react'
-import grua from '../assets/Grua.svg';
-import boxHooked from '../assets/Box Hooked.svg';
-import agricultureTruck from '../assets/Agriculture.svg';
+import grua from '../../assets/Grua.svg';
+import boxHooked from '../../assets/Box Hooked.svg';
+import agricultureTruck from '../../assets/Agriculture.svg';
 
 export const Animation = () => {
   return (

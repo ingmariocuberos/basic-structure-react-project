@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { logAction } from '../store/reducers/authReducer';
+import { logoutMid } from '../components/actions/authAction';
 
 export const AppPrivateRoutes = () => {
 
     const dispatch = useDispatch();
 
     const logOut = () =>{
-        dispatch(logAction(false));
+        dispatch(logoutMid());
         localStorage.removeItem('user');
     }
 
   return (
     <Routes>
-        <Route path='' element={<button onClick={logOut}>Pagina Privada</button>} />
+        <Route path='' element={<button onClick={logOut}>LogOut</button>} />
         <Route path='/hola' element={<h1>Pagina Privada 2</h1>} />
         <Route
           path="*"

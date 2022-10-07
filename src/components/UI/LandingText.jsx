@@ -1,5 +1,5 @@
-import alarm from '../assets/Alarm.svg';
-import world from '../assets/Language.svg';
+import alarm from '../../assets/Alarm.svg';
+import world from '../../assets/Language.svg';
 
 export const LandingText = () => {
   return (

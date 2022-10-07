@@ -5,4 +5,10 @@ export default configureStore({
   reducer: {
       auth: authReducer
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: ()=>{}
+      }
+    })
 })
